@@ -15,9 +15,9 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "goods_stock")
+@Table(name = "ar_goods_stock")
 public class GoodsStock {
- 
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer seq;
