@@ -26,11 +26,8 @@ public class CustomPostgreSQLDialect extends PostgreSQL10Dialect {
 
 
         // 사용자 정의함수
-        this.registerFunction("fn_rentdtbetween", new SQLFunctionTemplate(StandardBasicTypes.STRING, "fn_rentdtbetween(?1)"));
-        this.registerFunction("fn_exist_stay", new SQLFunctionTemplate(StandardBasicTypes.STRING, "fn_exist_stay(?1)"));
-        this.registerFunction("fn_exist_rentcar", new SQLFunctionTemplate(StandardBasicTypes.STRING, "fn_exist_rentcar(?1)"));
-        this.registerFunction("fn_exist_private", new SQLFunctionTemplate(StandardBasicTypes.STRING, "fn_exist_private(?1)"));
-        this.registerFunction("fn_exist_ticket", new SQLFunctionTemplate(StandardBasicTypes.STRING, "fn_exist_ticket(?1)"));
+        this.registerFunction("fn_dtbetween", new SQLFunctionTemplate(StandardBasicTypes.STRING, "fn_dtbetween(?1)"));
+        
 
     }
 }
