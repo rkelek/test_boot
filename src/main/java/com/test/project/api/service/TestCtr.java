@@ -86,6 +86,7 @@ public class TestCtr {
 		DataResultVo resultVo = new DataResultVo();
 		
 		System.out.println("pull request 입니다");
+		System.out.println("브랜치가 쓴겁니다");
 		
 		return resultVo;
 	}
