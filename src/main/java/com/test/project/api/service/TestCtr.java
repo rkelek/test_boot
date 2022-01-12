@@ -85,12 +85,7 @@ public class TestCtr {
 	public ResultVo getTest3(HttpServletRequest req, HttpServletResponse rep) throws Exception {
 		DataResultVo resultVo = new DataResultVo();
 		
-		Map<String, Object> allMap = new HashMap<String, Object>();
-		allMap.put("cancelAmount", 0);
-		
-		
-		int cancelAmount =	StringUtil.convNull(allMap.get("cancelAmount"), -1);
-		System.out.println("cancelAmount : " + cancelAmount);
+		System.out.println("pull request 입니다");
 		
 		return resultVo;
 	}
