@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+   <definition name="empty" template="/WEB-INF/views/_tiles/layouts/empty.jsp" preparer="frontPreparer">
+       <put-attribute name="body" value="" />
+   </definition>
+   
+   <definition name="main" template="/WEB-INF/views/_tiles/layouts/defaultLayout.jsp">
+       <put-attribute name="title" value="test" />
+       <put-attribute name="include" value="/WEB-INF/views/_tiles/template/service/include.jsp" />
+       <put-attribute name="body" value="" />
+   </definition>   
+   
+   <definition name="/service/main/main" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/service/main/main.jsp" />
+   </definition>
+
+</tiles-definitions>

@@ -1,0 +1,115 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+}
+
+group = 'com.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	querydsl {
+        extendsFrom compileClasspath
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+apply plugin: "com.ewerk.gradle.plugins.querydsl"
+
+def querydslSrcDir = 'src/main/generated/queryDsl'
+ 
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslSrcDir
+}
+ 
+compileQuerydsl{
+    options.annotationProcessorPath = configurations.querydsl
+}
+ 
+sourceSets {
+    main {
+        java {
+            srcDirs querydslSrcDir
+        }
+    }
+}
+
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    runtimeOnly 'org.postgresql:postgresql'
+
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.batch:spring-batch-test'
+    
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    
+    implementation "org.apache.tiles:tiles-core:3.0.8"
+    implementation "org.apache.tiles:tiles-servlet:3.0.8"
+    implementation "org.apache.tiles:tiles-jsp:3.0.8"
+    implementation "org.apache.tiles:tiles-el:3.0.8"
+    
+    
+    implementation 'net.coobird:thumbnailator:0.4.8'
+    implementation 'org.apache.poi:poi:4.0.0'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+    
+    
+    implementation 'jstl:jstl:1.2'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    implementation 'com.querydsl:querydsl-core:5.0.0.M1'
+    implementation 'com.querydsl:querydsl-sql:5.0.0.M1'
+    implementation 'com.querydsl:querydsl-jpa:5.0.0.M1'
+    implementation 'com.querydsl:querydsl-apt:5.0.0.M1'
+    
+
+    annotationProcessor 'com.querydsl:querydsl-apt'
+    
+    //quartz import 오류로
+    implementation "org.quartz-scheduler:quartz:2.3.0"
+    
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+    
+    implementation 'org.springframework.retry:spring-retry:1.1.5.RELEASE'
+    implementation 'org.springframework:spring-aspects'
+    
+	implementation group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.14.0'
+    
+    
+}
+
+test {
+    useJUnitPlatform()
+}
+
+bootRun {
+    String activeProfile = System.properties['spring.profiles.active']
+    systemProperty "spring.profiles.active", activeProfile
+}
