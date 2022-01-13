@@ -88,7 +88,7 @@ public class TestCtr {
 		System.out.println("pull request 입니다");
 		System.out.println("브랜치가 쓴겁니다");
 		
-		System.out.println("1안 입니다.");
+		System.out.println("2안 입니다.");
 		
 		return resultVo;
 	}
